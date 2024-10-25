@@ -16,9 +16,9 @@
     <tr>
 　   <td><%= f.title %></td>
      <td><%= f.body %></td>
-     <td><a class="show-link"><%= link_to "Show", book_path(f) %></a></td>
-     <td><a class="edit-link"><%= link_to "Edit", edit_book_path(f) %></a></td>
-     <td><a class="destroy-link"><%= link_to "Destroy", destroy_book_path(f), method: :delete, data: {confirm: "本当に削除しますか？"} %></a></td>
+     <td><%= link_to "Show", book_path(f), class: "show-link" %></td>
+     <td><%= link_to "Edit", edit_book_path(f), class: "edit-link" %></td>
+     <td><%= link_to "Destroy", destroy_book_path(f), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "destroy-link" %></td>
     </tr>
    <% end %>
   </tbody>
@@ -27,12 +27,14 @@
  <h2>New book</h2>
  
  <% if @book.errors.any? %>
-  <%= @book.errors.count %> errors prohibited this book from being saved:
-  <ul>
+  <div id="error_explanation">
+   <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
+   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
-  </ul>
+   </ul>
+  </div>
  <% end %>
  
  <%= form_with model: @book do |f| %>
